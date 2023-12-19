@@ -28,4 +28,27 @@ class StorekeeperController extends Controller
             ->with('message', 'Product Added Successfully');
         ;
     }
+    // sell product
+    public function sell()
+    {
+        $data = Product::all();
+        return view('admin.sellProduct', compact('data'));
+    }
+    // update data
+    public function update(Request $request, $id)
+    {
+        $data = Product::find($id);
+        if ($data->sell !== 0) {
+            $data->sell = $data->sell + $request->sell;
+            $data->save();
+            return redirect()->route('dashboard')
+                ->with('message', 'Product Updated Successfully');
+        } else {
+            $data->sell = $request->sell;
+            $data->save();
+            return redirect()->route('dashboard')
+                ->with('message', 'Product Updated Successfully');
+        }
+
+    }
 }

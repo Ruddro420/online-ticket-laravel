@@ -32,7 +32,8 @@
           <li><a href="{{route('dashboard')}}" class="active"><span
                 class="las la-adjust"></span><span>Dashboard</span></a></li>
           <li><a href="{{route('product.view')}}"><span class="las la-video"></span><span>Add Products</span></a></li>
-          <li><a href="#"><span class="las la-chart-bar"></span><span>Sale Product</span></a></li>
+          <li><a href="{{route('product.sell')}}"><span class="las la-chart-bar"></span><span>Sale Product</span></a>
+          </li>
           {{-- <li><a href="#"><span class="las la-calendar"></span><span>Schedule</span></a></li>
           <li><a href="#"><span class="las la-user"></span><span>Account</span></a></li> --}}
         </ul>

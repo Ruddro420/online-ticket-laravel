@@ -35,6 +35,8 @@ Route::get('/dashboard', [StorekeeperController::class, 'dashboard'])->middlewar
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/product/view', [StorekeeperController::class, 'view'])->name('product.view');
     Route::post('/product/add', [StorekeeperController::class, 'store'])->name('product.add');
+    Route::get('/product/sell', [StorekeeperController::class, 'sell'])->name('product.sell');
+    Route::post('/product/update/{id}', [StorekeeperController::class, 'update'])->name('product.update');
 
 });
 
