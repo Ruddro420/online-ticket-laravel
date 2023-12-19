@@ -1,2 +1,2 @@
-#Username - admin@gmail.com
-#Password - 12345678
+# Username - admin@gmail.com
+# Password - 12345678
