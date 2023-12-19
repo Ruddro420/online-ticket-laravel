@@ -7,6 +7,11 @@
   {{-- Link Css --}}
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+  </script>
   <title>StoreKepper</title>
 </head>
 
@@ -24,8 +29,9 @@
       <br>
       <div class="sidebar-menu">
         <ul>
-          <li><a href="#" class="active"><span class="las la-adjust"></span><span>Dashboard</span></a></li>
-          <li><a href="#"><span class="las la-video"></span><span>Add Products</span></a></li>
+          <li><a href="{{route('dashboard')}}" class="active"><span
+                class="las la-adjust"></span><span>Dashboard</span></a></li>
+          <li><a href="{{route('product.view')}}"><span class="las la-video"></span><span>Add Products</span></a></li>
           <li><a href="#"><span class="las la-chart-bar"></span><span>Sale Product</span></a></li>
           {{-- <li><a href="#"><span class="las la-calendar"></span><span>Schedule</span></a></li>
           <li><a href="#"><span class="las la-user"></span><span>Account</span></a></li> --}}

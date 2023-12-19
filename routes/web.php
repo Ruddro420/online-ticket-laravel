@@ -32,6 +32,11 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard', [StorekeeperController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+    Route::get('/product/view', [StorekeeperController::class, 'view'])->name('product.view');
+    Route::post('/product/add', [StorekeeperController::class, 'store'])->name('product.add');
+
+});
 
 
 

@@ -2,6 +2,11 @@
 @section('content')
 <section>
     <h3 class="section-head">Overview</h3>
+    @if(session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
     <div class="analytics">
         <div class="analytic">
             <div class="analytic-icon"><span class="las la-eye"></span></div>
@@ -33,8 +38,4 @@
         </div>
     </div>
 </section>
-
-
-
-
 @endsection
