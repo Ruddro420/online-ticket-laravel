@@ -53,10 +53,14 @@
         </div>
       </div>
       <div class="header-action">
-        <button class="btn btn-main">
-          <span class="las la-video"></span>
-          Logout
-        </button>
+        <form method="POST" action="{{ route('logout') }}" class="btn btn-dark text-white">
+          @csrf
+
+          <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                              this.closest('form').submit();">
+            {{ __('Log Out') }}
+          </x-dropdown-link>
+        </form>
       </div>
     </header>
     {{-- Main Content --}}

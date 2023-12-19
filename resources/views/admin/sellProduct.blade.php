@@ -9,9 +9,10 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Unit</th>
+                    <th scope="col">Current Unit</th>
                     <th scope="col">Sell</th>
                     <th scope="col">Action</th>
+                    <th scope="col">Total Unit</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +20,7 @@
                 <tr>
                     <th scope="row">{{$value + 1}}</th>
                     <td>{{ $item->name}}</td>
-                    <td>{{ $item->price}}</td>
+                    <td>{{ $item->price}} Taka</td>
                     <td>{{ $item->unit - $item->sell}}</td>
                     <td>
                         {{ $item->sell}}
@@ -33,6 +34,7 @@
 
                         </form>
                     </td>
+                    <td>{{ $item->unit}}</td>
                 </tr>
                 @endforeach
 

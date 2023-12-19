@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class StorekeeperController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $data = Product::all();
+        $todaySale = Product::whereDate('created_at', Carbon::today())->sum('sell');
+        $yesterdaySale = Product::whereDate('created_at', Carbon::yesterday())->sum('sell');
+        $thisMonthSale = Product::whereMonth('created_at', Carbon::now()->month)->sum('sell');
+        $lastMonthSale = Product::whereMonth('created_at', Carbon::now()->subMonth()->month)->sum('sell');
+        return view('admin.dashboard', compact('data', 'todaySale', 'yesterdaySale', 'thisMonthSale', 'lastMonthSale'));
     }
     // view product
     public function view()
