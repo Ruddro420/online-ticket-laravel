@@ -18,8 +18,7 @@ class TicketController extends Controller
         $date = $request->date;
         $seat = $request->seat;
         $form = $request->form;
-        $to = $request->to;
-
+        $to = "Cox's Bazaar";
         // date by total seat
         $dateBySeat = Booking::where('date', $date)
             ->sum('seat');
@@ -30,17 +29,19 @@ class TicketController extends Controller
             return redirect()->back()->with('status', 'Seat not available. Try another date.');
         } else {
             return view('book', ['date' => $date, 'seat' => $seat, 'form' => $form, 'to' => "Cox's Bazaar", 'status' => 'Seat available ! Book Now']);
+
         }
     }
     // booking show
-    /* public function booking(Request $request)
+    public function storeBooking(Request $request)
     {
-        // Retrieve the date and seat from the request
-        $date = $request->input('date');
-        $seat = $request->input('seat');
-
-        // Use $date and $seat in your logic
-
-        return view('book', ['date' => $date, 'seat' => $seat]);
-    } */
+        $booking = new Booking();
+        $booking->date = $request->date;
+        $booking->seat = $request->seat;
+        $booking->from = $request->form;
+        $booking->to = $request->to;
+        $booking->user_id = $request->phn;
+        $booking->save();
+        return redirect()->route('welcome')->with('status', "Booking Successfully.");
+    }
 }

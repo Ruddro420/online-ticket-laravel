@@ -28,7 +28,9 @@
                 </svg>
                 <p>{{ $status }}</p>
             </div>
-            <form action="{{route('ticket.check')}}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form action="{{route('store.booking')}}" method="post"
+                class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                @csrf
                 <div class="mb-5">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
                         FORM
@@ -36,7 +38,7 @@
                     <div class="relative">
                         <input
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" value="{{$form}}" disabled name="form">
+                            type="text" value="{{$form}}" readonly name="form">
                     </div>
                 </div>
                 <div class="mb-4">
@@ -45,7 +47,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" value="{{$to}}" disabled name="to">
+                        type="text" value="{{$to}}" readonly name="to">
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -53,7 +55,7 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="date" name="date" value="{{$date}}">
+                        type="date" name="date" value="{{$date}}" readonly>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -61,15 +63,16 @@
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="number" name="seat" placeholder="4" value="{{$seat}}">
+                        type="number" name="seat" placeholder="4" value="{{$seat}}" readonly>
                 </div>
+                <hr>
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">
-                        Phone Number
+                        Phone Number <b class="text-red-500">(*Remember this number for further update*)</b>
                     </label>
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="number" name="phn" placeholder="4" value="{{$seat}}">
+                        type="number" name="phn" placeholder="01755232541" required>
                 </div>
                 <div class="flex items-center justify-between">
                     <button

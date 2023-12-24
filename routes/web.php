@@ -41,8 +41,7 @@ Route::get('/dashboard', [TicketController::class, 'dashboard'])->middleware(['a
 Route::get('/', [TicketController::class, 'welcome'])->name('welcome');
 Route::get('/booking', [TicketController::class, 'booking'])->name('ticket.book');
 Route::get('/check', [TicketController::class, 'check'])->name('ticket.check')->middleware('booking.field.not.empty');
-Route::get('/storeBooking', [TicketController::class, 'storeBooking'])->name('store.booking')->middleware('booking.field.not.empty');
-;
+Route::post('/storeBooking', [TicketController::class, 'storeBooking'])->name('store.booking');
 
 
 
