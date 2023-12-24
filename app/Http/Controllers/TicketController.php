@@ -44,4 +44,15 @@ class TicketController extends Controller
         $booking->save();
         return redirect()->route('welcome')->with('status', "Booking Successfully.");
     }
+    // ticket check
+    public function checkTicket()
+    {
+        return view('ticktCheck');
+    }
+    public function searchTicket(Request $request)
+    {
+        $data = Booking::where('user_id', '=', $request->phn)->get();
+        return view('ticktCheck', compact('data'));
+
+    }
 }
