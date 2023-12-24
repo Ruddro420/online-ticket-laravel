@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\StorekeeperController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\StorekeeperController;
 
 
 /*
@@ -15,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
-
+ */
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,15 +31,18 @@ Route::get('/dashboard', function () {
 });
  */
 
-Route::get('/dashboard', [StorekeeperController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [TicketController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('dashboard')->middleware('auth')->group(function () {
-    Route::get('/product/view', [StorekeeperController::class, 'view'])->name('product.view');
-    Route::post('/product/add', [StorekeeperController::class, 'store'])->name('product.add');
-    Route::get('/product/sell', [StorekeeperController::class, 'sell'])->name('product.sell');
-    Route::post('/product/update/{id}', [StorekeeperController::class, 'update'])->name('product.update');
+/* Route::prefix('dashboard')->middleware('auth')->group(function () {
+    
 
-});
+}); */
+
+Route::get('/', [TicketController::class, 'welcome'])->name('welcome');
+Route::get('/booking', [TicketController::class, 'booking'])->name('ticket.book');
+Route::get('/check', [TicketController::class, 'check'])->name('ticket.check')->middleware('booking.field.not.empty');
+Route::get('/storeBooking', [TicketController::class, 'storeBooking'])->name('store.booking')->middleware('booking.field.not.empty');
+;
 
 
 
